@@ -198,4 +198,4 @@ TES_names <- TES_names %>%
     )
   )
 
-write_csv(TES_names, '~/TES_Name_Generation/data/TES_names.csv')
+write_csv(TES_names, '~/elder-scrolls-name-generation/data/TES_names.csv')
