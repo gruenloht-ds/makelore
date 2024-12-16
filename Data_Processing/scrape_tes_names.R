@@ -181,6 +181,17 @@ TES_names <- bind_rows(
   ) %>% 
   select(name, game)
 
+# Remove the prefix Jarl in all "Jarl [Name]" for Skyrim characters
+# The URL for non Skyrim (ESO) Jarls has their Jarl title in it, Skyrim does not
+TES_names <- TES_names %>% mutate(
+  name = case_when(
+    game == 'Skyrim' ~ str_replace_all(name, "^Jarl\\s+", ""),
+    TRUE ~ name
+  )
+) %>% group_by(name, game) %>% 
+  filter(row_number() == 1) %>% 
+  ungroup
+
 # Fun analysis of same names that were used in two different games
 # Keep all dups as the are different people
 TES_names %>% 
@@ -198,6 +209,9 @@ TES_names <- TES_names %>%
       str_replace_all(name, ' ', '_')
     )
   )
+
+# Now, after URL has been created, go back and remove Jarl title from all people
+TES_names <- TES_names %>% mutate(name = str_replace_all(name, "^Jarl\\s+", ""))
 
 # Will clean up this list more in depth, but for now, get rid of easily detectable unwanted names
 guards <- TES_names$name[str_detect(tolower(TES_names$name), tolower('Guards'))]
