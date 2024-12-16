@@ -10,7 +10,7 @@ html_page <- read_html(url)
 
 # Note dragons and other creatures are not scraped in this search
 
-# This match will miss people from random encounters as these people are formatted in a list "li b a"
+# This match will miss people from random encounters as these people are formatted in a list
 table_cells <- html_page %>%
   html_nodes('td > b a') %>%
   html_text()
@@ -182,6 +182,7 @@ TES_names <- bind_rows(
   select(name, game)
 
 # Fun analysis of same names that were used in two different games
+# Keep all dups as the are different people
 TES_names %>% 
   group_by(name) %>% 
   filter(n() > 1) %>%
@@ -197,5 +198,12 @@ TES_names <- TES_names %>%
       str_replace_all(name, ' ', '_')
     )
   )
+
+# Will clean up this list more in depth, but for now, get rid of easily detectable unwanted names
+guards <- TES_names$name[str_detect(tolower(TES_names$name), tolower('Guards'))]
+initiate <- TES_names$name[str_detect(tolower(TES_names$name), tolower('.* Initiate'))]
+dlc <- TES_names %>% filter(name %in% c('CC', 'HF', 'DG', 'DB')) %>% pull(name)
+
+TES_names <- TES_names %>% filter(!(name %in% c(guards, initiate, dlc)))
 
 write_csv(TES_names, '~/elder-scrolls-name-generation/data/TES_names.csv')
