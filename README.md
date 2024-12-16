@@ -32,3 +32,13 @@ A secondary objective for this project is to gain experience with webscraping pu
 #### Generative Adversarial Networks (GANs)
 
 #### Transformers
+
+#### Pretrained LLMs
+
+###### Zero-shot
+
+###### Few-shot
+
+###### Retreival Augmented Generation (RAG)
+
+###### Fine Tunning
