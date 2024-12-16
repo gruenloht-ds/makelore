@@ -2,43 +2,55 @@
 
 This project is designed as a hands-on learning experience in generative modeling for text data. The application revolves around generating believable NPC (Non-Player Character) names inspired by The Elder Scrolls (TES) game series. This README outlines the project's objectives, structure, and methodologies, as well as gives an outline of how generative AI has progressed over time. This project is in the early stages and is still being being updated.
 
-### Objectives
+## Objectives
 
-To gain a deeper understanding of generative modeling and its evolution over time. This project explores the progression of techniques, starting with foundational methods like Hidden Markov Models and ending with cutting-edge architectures such as Generative Transformers. Along the way, it will have implementations of notable milestones in generative AI, including RNNs, VAEs, RBMs, and others, offering a comprehensive look at how generative models have advanced through the years.
+Gain a deeper understanding of generative modeling and its evolution over time. This project explores the progression of techniques, starting with foundational methods like Hidden Markov Models and ending with cutting-edge architectures such as Generative Transformers. Along the way, it will have implementations of notable milestones in generative AI, including RNNs, VAEs, RBMs, and others, offering a comprehensive look at how generative models have advanced through the years.
 
 A secondary objective for this project is to gain experience with webscraping publicly available online information.
 
-### Structure
+
+## Structure
 
 - `Data_Processing` contains scripts used to obtain, clean, and augment any data used in this project
   - `scrape_tes_names.R` uses R's `rvest` package to scrape NPC names
 
-### Methodologies
+
+## Methodologies
 
 [The Unofficial Elder Scrolls Pages](https://en.uesp.net/wiki/Main_Page) has very thorough documentation on all game details including NPC names which were used in this project.
 
-### The Evlolution of Generative AI
+---
 
-#### Hidden Markov Models
+## The Evlolution of Generative AI
 
-#### Embeddings
+### Hidden Markov Models
 
-#### Recurrent Neural Networks (RNNs)
+### Embeddings
 
-#### Variational Autoencoders (VAEs)
+### Recurrent Neural Networks (RNNs)
 
-#### Restricted Boltzmann Machines (RBMs)
+##### Vanilla RNN
 
-#### Generative Adversarial Networks (GANs)
+##### Long Short-Term Memory (LSTM)
 
-#### Transformers
+##### Gated Recurrent Unit (GRU)
 
-#### Pretrained LLMs
+### Variational Autoencoders (VAEs)
 
-###### Zero-shot
+### Restricted Boltzmann Machines (RBMs)
 
-###### Few-shot
+### Generative Adversarial Networks (GANs)
 
-###### Retreival Augmented Generation (RAG)
+### Transformers
 
-###### Fine Tunning
+### Pretrained LLMs
+
+##### Zero-shot
+
+##### Few-shot
+
+##### Retreival Augmented Generation (RAG)
+
+##### Fine Tunning
+
+### State Space Models
