@@ -24,7 +24,7 @@ A secondary objective for this project is to gain experience with webscraping pu
 
 ## The Evlolution of Generative AI
 
-### Hidden Markov Models
+### Markov Models
 
 ### Embeddings
 
