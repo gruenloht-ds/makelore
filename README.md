@@ -2,7 +2,7 @@
 
 This project is designed as a hands-on learning experience in generative modeling for text data. The application revolves around generating believable NPC (Non-Player Character) names inspired by The Elder Scrolls (TES) game series. This README outlines the project's objectives, structure, and methodologies, as well as gives an outline of how generative AI has progressed over time. This project is in the early stages and is still being being updated.
 
-This project is inspired by Andrej Karpathy's [makemore](https://github.com/karpathy/makemore), which generates "makes more" human anmes using autogressive models. This project is different by focusing on TES Lore to "make more lore", and will implement more models.
+This project is inspired by Andrej Karpathy's [makemore](https://github.com/karpathy/makemore), which "makes more" human anmes using autogressive models. This project is different by focusing on TES Lore and character names to "make more lore", and will implement a wider range of techniques.
 
 ## Objectives
 
