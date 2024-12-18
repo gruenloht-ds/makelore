@@ -45,7 +45,7 @@ linked <- linked %>%
   bind_rows(linked) %>% 
   select(-full_name) %>%
   distinct %>% 
-  filter(name != '1')
+  filter(!(name %in% c('1', '2')))
 
 # Add sex
 # website has names ordered by sex, everyone before a certain name is male
