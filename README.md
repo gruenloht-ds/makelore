@@ -14,8 +14,9 @@ A secondary objective for this project is to gain experience with webscraping pu
 ## Structure
 
 - `Data_Processing` contains scripts used to obtain, clean, and augment any data used in this project
-  - `01_scrape_tes_names.R` uses R's `rvest` package to scrape NPC names
+  - `01_scrape_lore_names.R` uses R's `rvest` package to scrape NPC names
   - `02_clean_npc_names.R` cleans, removes, and formats npc names to reflect webpage URLs better
+  - `archive/` stores old code not used anymore. Documentation is inside this folder
 
 
 ## Methodologies
