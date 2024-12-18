@@ -153,4 +153,4 @@ TES_names <- bind_rows(
   ) %>% 
   select(name, game)
 
-write_csv(TES_names, '~/elder-scrolls-name-generation/data/TES_names.csv')
+write_csv(TES_names, 'data/TES_names.csv')
