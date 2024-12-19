@@ -19,7 +19,7 @@ A secondary objective for this project is to gain experience with webscraping pu
   - `03_combine_tes_lore.R `: combines the unique information from step `01` and `02`
   - `archive/` stores old code not used anymore
  
-- `npc_data.csv`: the web scraped NPC data - the output from code in `Data_Processing`
+- `npc_data.csv`: 43K names from The Elder Scrolls universe. This is web scraped data and is from the output of the code in `Data_Processing`
   - `name`: the name of the NPC
   - `sex`: the sex of the NPC
   - `race`: the race of the NPC
