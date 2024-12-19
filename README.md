@@ -13,11 +13,17 @@ A secondary objective for this project is to gain experience with webscraping pu
 
 ## Structure
 
-- `Data_Processing` contains scripts used to obtain, clean, and augment any data used in this project
+- `Data_Processing` contains scripts used to obtain and clean any data used in this project
   - `01_scrape_tes_names.R`: uses R's `rvest` package to scrape NPC names from specific game information pages
   - `02_scrape_lore_names.R`: uses R's `rvest` to scrape NPC names from the lore information pages
   - `03_combine_tes_lore.R `: combines the unique information from step `01` and `02`
-  - `archive/` stores old code not used anymore. Documentation is inside this folder
+  - `archive/` stores old code not used anymore
+ 
+- `npc_data.csv`: the web scraped NPC data - the output from code in `Data_Processing`
+  - `name`: the name of the NPC
+  - `sex`: the sex of the NPC
+  - `race`: the race of the NPC
+  - `url`: a URL to get more information about the NPC
 
 
 ## Methodologies
