@@ -1,3 +1,4 @@
 data/
 todo.txt
 .ipynb_checkpoints
+.gitignore
