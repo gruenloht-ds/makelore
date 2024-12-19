@@ -15,6 +15,7 @@ Memory| of |Imperial|Rebel|Headsman|Adventurer|Watchman|Vampire|Miners|Sacrifice
 
 npc_names <- lore_names %>% 
   bind_rows(combine) %>% 
-  arrange(name)
+  arrange(name) %>% 
+  select(-game)
 
 write_csv(npc_names, 'data/npc_names.csv')
