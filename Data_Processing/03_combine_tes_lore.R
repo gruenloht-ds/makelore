@@ -18,4 +18,14 @@ npc_names <- lore_names %>%
   arrange(name) %>% 
   select(-game)
 
-write_csv(npc_names, 'data/npc_names.csv')
+# Drop all NA values unless all values for that id are NA, then just keep one row
+npc_names <- npc_names %>% group_by(name, sex, race) %>% 
+  filter(!all(is.na(url)) | row_number() == 1) %>%
+  filter(!is.na(url) | all(is.na(url))) %>% ungroup
+
+npc_names <- npc_names %>% filter(
+  !(name == '†' | str_detect(name, '^[a-z]|\\['))
+)
+
+write_csv(npc_names, 'npc_data.csv')
+# write_delim(as.data.frame(unique(npc_names$name)), 'npc_names.txt', delim = '\n', col_names = F)
