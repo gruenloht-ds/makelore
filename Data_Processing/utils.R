@@ -36,10 +36,13 @@ scrape_data <- function(url, extract, sleep = FALSE) {
 scrape_all <- function(url, extract){
   output <- list()
   output[['name']] <- scrape_data(url, extract)
-  output[['url']] <- paste0('https://en.uesp.net',scrape_url(url, extract))
+  
+  cleaned_url <- paste0('https://en.uesp.net',scrape_url(url, extract))
+  output[['url']] <- str_replace(cleaned_url, "#.*$", "") # remove any link to somewhere later in the page
   
   full_name <- str_replace_all(str_extract(output$url, "(?<=:)[^/]+$"), '_', ' ')
   full_name <- str_replace_all(full_name, '%27', "'")
+  full_name <- str_replace_all(full_name, '%22', '') # This is " but it makes the data look weird so I'm just removing it
   output[['full_name']] <- full_name
   
   return(output)
@@ -58,5 +61,8 @@ clean_strings <- function(vec) {
   # Flatten the list and extract unique elements
   unique_elements <- unique(unlist(split_elements))
   
-  return(unique_elements)
+  # Remove parentheses and their contents
+  cleaned_strings <- str_replace_all(unique_elements, "\\s*\\(.*?\\)", "")
+  
+  return(cleaned_strings)
 }
