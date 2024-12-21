@@ -50,28 +50,22 @@ A secondary objective for this project is to gain experience with webscraping pu
 ##### Gated Recurrent Unit (GRU)
 - [[1]](https://arxiv.org/abs/1406.1078)
 ### Variational Autoencoders (VAEs)
-- [[1]](https://arxiv.org/pdf/1511.06349)
+- [[1]](https://arxiv.org/abs/1511.06349)
 
 ### Restricted Boltzmann Machines (RBMs)
 
 ### Generative Adversarial Networks (GANs)
 
 ### Transformers
-- [[1]](https://arxiv.org/pdf/1409.0473)
-  - calculated attention through MLP
- 
-- [[2]](https://arxiv.org/abs/1508.04025)
-  - dot product attention (unscaled)
- 
-- [[3]](https://arxiv.org/pdf/1706.03762)
-  - transformer architecture 
-
+- [[1]](https://arxiv.org/abs/1409.0473): attention calculated with MLP
+- [[2]](https://arxiv.org/abs/1508.04025): dot product attention (unscaled)
+- [[3]](https://arxiv.org/abs/1706.03762): transformer architecture 
 ### Pretrained LLMs
-- [[1]](https://arxiv.org/pdf/1810.04805)
+- [[1]](https://arxiv.org/abs/1810.04805)
 ##### Zero-shot
 
 ##### Few-shot
-- [[1]](https://arxiv.org/pdf/2005.14165)
+- [[1]](https://arxiv.org/abs/2005.14165)
 ##### Retreival Augmented Generation (RAG)
 - [[1]](https://arxiv.org/abs/2005.11401)
 ##### Fine Tunning
