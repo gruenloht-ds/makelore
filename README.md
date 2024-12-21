@@ -57,8 +57,14 @@ A secondary objective for this project is to gain experience with webscraping pu
 ### Generative Adversarial Networks (GANs)
 
 ### Transformers
-- [attention](https://arxiv.org/pdf/1409.0473)
-- [[2]](https://arxiv.org/pdf/1706.03762)
+- [[1]](https://arxiv.org/pdf/1409.0473)
+  - calculated attention through MLP
+ 
+- [[2]](https://arxiv.org/abs/1508.04025)
+  - dot product attention (unscaled)
+ 
+- [[3]](https://arxiv.org/pdf/1706.03762)
+  - transformer architecture 
 
 ### Pretrained LLMs
 - [[1]](https://arxiv.org/pdf/1810.04805)
@@ -67,7 +73,7 @@ A secondary objective for this project is to gain experience with webscraping pu
 ##### Few-shot
 - [[1]](https://arxiv.org/pdf/2005.14165)
 ##### Retreival Augmented Generation (RAG)
-
+- [[1]](https://arxiv.org/abs/2005.11401)
 ##### Fine Tunning
 
 ### State Space Models
