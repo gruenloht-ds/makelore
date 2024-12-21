@@ -13,17 +13,19 @@ A secondary objective for this project is to gain experience with webscraping pu
 
 ## Structure
 
-- `Data_Processing` contains scripts used to obtain and clean any data used in this project
+- `processing/` contains scripts used to obtain and clean any data used in this project
   - `01_scrape_tes_names.R`: uses R's `rvest` package to scrape NPC names from specific game information pages
   - `02_scrape_lore_names.R`: uses R's `rvest` to scrape NPC names from the lore information pages
   - `03_combine_tes_lore.R `: combines the unique information from step `01` and `02`
   - `archive/` stores old code not used anymore
  
-- `npc_data.csv`: 43K names from The Elder Scrolls universe. This is web scraped data and is from the output of the code in `Data_Processing`
+- `npc_data.csv`: 43K names from The Elder Scrolls universe. This is web scraped data and is from the output of the code in `processing`
   - `name`: the name of the NPC
   - `sex`: the sex of the NPC
   - `race`: the race of the NPC
   - `url`: a URL to get more information about the NPC
+ 
+- `markov/`  contains python script to use a Markov Model / N-gram to generate names
 
 
 ## Methodologies
