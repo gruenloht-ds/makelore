@@ -37,33 +37,38 @@ A secondary objective for this project is to gain experience with webscraping pu
 ## The Evlolution of Generative AI
 
 ### Markov Models
-
+- [[1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6773024)
 ### Embeddings
-
+- [[1]](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
 ### Recurrent Neural Networks (RNNs)
 
 ##### Vanilla RNN
-
+-[[1]](https://icml.cc/2011/papers/524_icmlpaper.pdf)
 ##### Long Short-Term Memory (LSTM)
-
+- [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf)
+- [[2]](https://arxiv.org/abs/1409.3215)
 ##### Gated Recurrent Unit (GRU)
-
+-[[1]](https://arxiv.org/abs/1406.1078)
 ### Variational Autoencoders (VAEs)
+ - [[1]](/https://arxiv.org/pdf/1511.06349)
 
 ### Restricted Boltzmann Machines (RBMs)
 
 ### Generative Adversarial Networks (GANs)
 
 ### Transformers
+- [attention](https://arxiv.org/pdf/1409.0473)
+- [[2]](https://arxiv.org/pdf/1706.03762)
 
 ### Pretrained LLMs
-
+- [[1]](https://arxiv.org/pdf/1810.04805)
 ##### Zero-shot
 
 ##### Few-shot
-
+- [[1]](https://arxiv.org/pdf/2005.14165)
 ##### Retreival Augmented Generation (RAG)
 
 ##### Fine Tunning
 
 ### State Space Models
+- [[1]](https://arxiv.org/abs/2312.00752)
