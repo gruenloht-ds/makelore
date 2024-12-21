@@ -30,7 +30,8 @@ npc_names <- npc_names %>% mutate(
   name = str_remove(name, 'Discussion with '),
   name = str_remove(name, ', priest of .*'),
   name = str_remove(name, '\\.'),
-  name = str_remove_all(name, '"')
+  name = str_remove_all(name, '"'),
+  name = str_replace(name, 'ï', 'i') # This is a fun letter, but it only happens once: annaïg (annaeeg)
 )
 
 npc_names <- npc_names %>% filter(
