@@ -8,9 +8,9 @@ lore_names <- read_csv('data/lore_names.csv')
 
 combine <- tes_names %>% anti_join(lore_names, by = c('name')) %>%
   filter(
-    !(str_detect(name, "Night Mother| Guard| Soldier|Empire| Agent| Captain|Priestess| Orc|\\[|Prophet|Pale Lady|Dark Minion|Prisoner|The Squid|Figure|Statue|Sailor|Debtor|Combatant|Fisherman|
+    !(str_detect((name), ("Night Mother| Guard| Soldier|Empire| Agent| Captain|Priestess| Orc|\\[|Prophet|Pale Lady|Dark Minion|Prisoner|The Squid|Figure|Statue|Sailor|Debtor|Combatant|Fisherman|
 Direnni|Spirit|Worker|Northpoint|Alik'r|^The |Stendarr|Body|Refugee|Pact|Nord|Herald|Boat|Merchant|Redoran|Monster|Conjured|Apparition|Camp|Hunter|Housecarl|Projection|	
-Memory| of |Imperial|Rebel|Headsman|Adventurer|Watchman|Vampire|Miners|Sacrifice|Troll|Madman|Wizard|Stranger|Fan|Shady|Monkey"))
+Memory| of |Imperial|Rebel|Headsman|Adventurer|Watchman|Vampire|Miners|Sacrifice|Troll|Madman|Wizard|Stranger|Fan|Shady|Monkey|asked| to | from ")))
   )
 
 npc_names <- lore_names %>% 
@@ -23,8 +23,20 @@ npc_names <- npc_names %>% group_by(name, sex, race) %>%
   filter(!all(is.na(url)) | row_number() == 1) %>%
   filter(!is.na(url) | all(is.na(url))) %>% ungroup
 
+npc_names <- npc_names %>% mutate(
+  name = str_remove(name, '\u200e'),
+  name = str_remove(name, '&.*'),
+  name = str_remove(name, '/.*'),
+  name = str_remove(name, 'Discussion with '),
+  name = str_remove(name, ', priest of .*')
+)
+
 npc_names <- npc_names %>% filter(
-  !(name == '†' | str_detect(name, '^[a-z]|\\['))
+  !(name == '†' | str_detect(name, '^[a-z]|\\[')),
+  !(str_detect(name, '[0-9]')),
+  !(str_detect(name, ', ')),
+  !(str_detect(name, ' \\(.')),
+  !(nchar(name) > 40)
 )
 
 write_csv(npc_names, 'npc_data.csv')
