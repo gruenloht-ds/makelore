@@ -48,9 +48,9 @@ A secondary objective for this project is to gain experience with webscraping pu
 - [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf)
 - [[2]](https://arxiv.org/abs/1409.3215)
 ##### Gated Recurrent Unit (GRU)
--[[1]](https://arxiv.org/abs/1406.1078)
+- [[1]](https://arxiv.org/abs/1406.1078)
 ### Variational Autoencoders (VAEs)
- - [[1]](/https://arxiv.org/pdf/1511.06349)
+- [[1]](/https://arxiv.org/pdf/1511.06349)
 
 ### Restricted Boltzmann Machines (RBMs)
 
