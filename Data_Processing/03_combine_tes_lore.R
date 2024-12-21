@@ -28,7 +28,9 @@ npc_names <- npc_names %>% mutate(
   name = str_remove(name, '&.*'),
   name = str_remove(name, '/.*'),
   name = str_remove(name, 'Discussion with '),
-  name = str_remove(name, ', priest of .*')
+  name = str_remove(name, ', priest of .*'),
+  name = str_remove(name, '\\.'),
+  name = str_remove_all(name, '"')
 )
 
 npc_names <- npc_names %>% filter(
