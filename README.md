@@ -79,6 +79,7 @@ References
 ##### Long Short-Term Memory (LSTM)
 - [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf)
 - [[2]](https://arxiv.org/abs/1409.3215)
+- [[3]](https://arxiv.org/abs/2405.04517) - xlstm came after GPTs and popular transformers - asked the question does architecture matter or is it just a matter of feeding large amounts of data to a model
 ##### Gated Recurrent Unit (GRU)
 - [[1]](https://arxiv.org/abs/1406.1078)
 ### Variational Autoencoders (VAEs)
