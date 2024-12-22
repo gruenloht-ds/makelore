@@ -1,7 +1,7 @@
 Implements a Markov model. The usage is below:
 
 - `names_file`: The provided NPC names data csv file
-- `window`: The n-gram window size.
+- `window`: The number of previous characters to consider
 - `smoothing_value`: Smoothing value to apply.
 - `--num_names NUM_NAMES`: (Optional) Number of names to generate, default = 1
 - `--prefix PREFIX`: (Optional) Prefix for generated names to start with, default=""
