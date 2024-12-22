@@ -51,7 +51,6 @@ This section is ment to give an overview of how NLP has progressed over the year
   - [Zero-shot](#zero-shot)
   - [Few-shot](#few-shot)
   - [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation-rag)
- 
 - [State Space Models](#state-space-models)
 
 ---
@@ -60,7 +59,7 @@ This section is ment to give an overview of how NLP has progressed over the year
 
 The first language models, known as "n-grams", originated from Claude Shannon's "A Mathematical Theory of Communication" in 1948 [1].
 
-These models took advantage of higher statistical dependence between words (or characters) that are closer in a sentence, allowing the model to go beyond simple frequency counts and consider what was already said. 
+These models took advantage of higher statistical dependence between words (or characters) that are closer in a sentence (or word), allowing the model to go beyond simple frequency counts and consider what was previously said. 
 
 The limitations of n-grams include two main drawbacks:
 
