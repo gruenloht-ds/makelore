@@ -41,6 +41,12 @@ class MarkovModel():
         # Converts to probabilities
         self.normalize()
 
+        # sort inner dicts by keys
+        self.counter = {k: dict(sorted(v.items())) for k, v in self.counter.items()} # bro why do i need this
+        # For some reason - only when I run the code with a set seed using the terminal (using jupyter notebook is fine and works as expected)
+        # the names generate slightly differently even with a set seed (again only happens when using the terminal to run this - dont ask me why)
+        # sorting the dict before generating ensures the same name is generated each time when using a seed (yes, this took hours of troubleshooting)
+
     def normalize(self):
         # Normalize counts to probabilities
         for n_gram, next_words in self.counter.items():
@@ -88,7 +94,7 @@ if __name__ == "__main__":
     parser.add_argument('smoothing_value', type=float, help="Smoothing value to apply.")
     parser.add_argument('--num_names', type=int, default=1, help="Number of names to generate.")
     parser.add_argument('--prefix', type=str, default="", help="Optional prefix to start generated names.")
-    parser.add_argument('--seed', type=int, default=None, help="Optional prefix to start generated names.")
+    parser.add_argument('--seed', type=int, default=None, help="Seed to generate the same names each time.")
                         
     args = parser.parse_args()
 
