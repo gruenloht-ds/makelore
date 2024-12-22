@@ -37,6 +37,25 @@ A secondary objective for this project is to gain experience with webscraping pu
 ## The Evlolution of Generative AI
 This section is ment to give an overview of how NLP has progressed over the years. It is not meant to give descriptions of how these methods work. Rather, state what problems the method solved and what were some of the limitations. Implementations fo these methods can be found in code in the related folders.
 
+- [Markov Models / N-grams](#markov-models--n-grams)
+- [Embeddings](#embeddings)
+- [Recurrent Neural Networks (RNNs)](#recurrent-neural-networks-rnns)
+  - [Vanilla RNN](#vanilla-rnn)
+  - [Long Short-Term Memory (LSTM)](#long-short-term-memory-lstm)
+  - [Gated Recurrent Unit (GRU)](#gated-recurrent-unit-gru)
+- [Variational Autoencoders (VAEs)](#variational-autoencoders-vaes)
+- [Restricted Boltzmann Machines (RBMs)](#restricted-boltzmann-machines-rbms)
+- [Generative Adversarial Networks (GANs)](#generative-adversarial-networks-gans)
+- [Transformers](#transformers)
+- [Pretrained LLMs](#pretrained-llms)
+  - [Zero-shot](#zero-shot)
+  - [Few-shot](#few-shot)
+  - [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation-rag)
+ 
+- [State Space Models](#state-space-models)
+
+---
+
 ### Markov Models / N-grams
 
 The first language models, known as "n-grams", originated from Claude Shannon's "A Mathematical Theory of Communication" in 1948 [1].
@@ -80,7 +99,7 @@ References
 
 ##### Few-shot
 - [[1]](https://arxiv.org/abs/2005.14165)
-##### Retreival Augmented Generation (RAG)
+##### Retrieval Augmented Generation (RAG)
 - [[1]](https://arxiv.org/abs/2005.11401)
 ##### Fine Tunning
 
