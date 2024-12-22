@@ -2,7 +2,7 @@
 
 This project is designed as a hands-on learning experience in generative modeling for text data. The application revolves around generating believable NPC (Non-Player Character) names inspired by The Elder Scrolls (TES) game series. This README outlines the project's objectives, structure, and methodologies, as well as gives an outline of how generative AI has progressed over time. This project is in the early stages and is still being being updated.
 
-This project is inspired by Andrej Karpathy's [makemore](https://github.com/karpathy/makemore), which "makes more" human names using autogressive models. This project is different by focusing on TES Lore and character names to "make more lore", and will implement a wider range of techniques.
+This project is inspired by Andrej Karpathy's [makemore](https://github.com/karpathy/makemore), which "makes more" human names using autogressive models. This project is different by focusing on TES Lore and character names to "make more lore", and will implement a wider range of techniques. Future versions of this project may also include multimodal data, and generate an image of a character as well.
 
 ## Objectives
 
@@ -35,9 +35,23 @@ A secondary objective for this project is to gain experience with webscraping pu
 ---
 
 ## The Evlolution of Generative AI
+This section is ment to give an overview of how NLP has progressed over the years. It is not meant to give descriptions of how these methods work. Rather, state what problems the method solved and what were some of the limitations. Implementations fo these methods can be found in code in the related folders.
 
-### Markov Models
+### Markov Models / N-grams
+
+The first language models, known as "n-grams", originated from Claude Shannon's "A Mathematical Theory of Communication" in 1948 [1].
+
+These models took advantage of higher statistical dependence between words (or characters) that are closer in a sentence, allowing the model to go beyond simple frequency counts and consider what was already said. 
+
+The limitations of n-grams include two main drawbacks:
+
+1. As $n$ increases, the number of possible n-grams grows exponentially. This is often referred to as the "curse of dimensionality", and requires vast amounts of data to accurately estimate the probabilities of all n-grams.
+2. N-grams only consider the preceding $n−1$ words when making predictions. However, natural language often contains long-range dependencies/connections between words or phrases in a sentence or paragraph.
+
+
+References
 - [[1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6773024)
+
 ### Embeddings
 - [[1]](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
 ### Recurrent Neural Networks (RNNs)
