@@ -47,10 +47,12 @@ This section is ment to give an overview of how NLP has progressed over the year
 - [Restricted Boltzmann Machines (RBMs)](#restricted-boltzmann-machines-rbms)
 - [Generative Adversarial Networks (GANs)](#generative-adversarial-networks-gans)
 - [Transformers](#transformers)
-- [Pretrained LLMs](#pretrained-llms)
-  - [Zero-shot](#zero-shot)
-  - [Few-shot](#few-shot)
-  - [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation-rag)
+- [Transformer-Based Models](#transformer-based-models)
+  - [Pretrained Language Models (PLMs)](#pretrained-language-models-plms)
+  - [Large Language Models (LLMs)](#large-language-models-llms)
+    - [Zero, One, Few - Shot Learning](#zero-shot-one-shot-few-shot-learning)
+    - [Retrieval Augmented Generation (RAG)](#retrieval-augmented-generation-rag)
+    - [Fine Tuning](#fine-tuning)
 - [State Space Models](#state-space-models)
 
 ---
@@ -93,15 +95,22 @@ References
 - [[1]](https://arxiv.org/abs/1409.0473): attention calculated with MLP
 - [[2]](https://arxiv.org/abs/1508.04025): dot product attention (unscaled)
 - [[3]](https://arxiv.org/abs/1706.03762): transformer architecture 
-### Pretrained LLMs
-- [[1]](https://arxiv.org/abs/1810.04805)
-##### Zero-shot
 
-##### Few-shot
-- [[1]](https://arxiv.org/abs/2005.14165)
+### Transformer-Based Models
+
+#### Pretrained Language Models (PLMs)
+- [[1]](https://arxiv.org/abs/1810.04805) bert
+#### Large Language Models (LLMs)
+- [[1]](https://arxiv.org/abs/2203.02155) chatgpt
+- [[2]](https://arxiv.org/abs/2302.13971) llama
+##### Zero-shot, One-shot, Few-shot Learning
+- [[1]](https://arxiv.org/abs/2005.14165) lms are few shot learners
 ##### Retrieval Augmented Generation (RAG)
 - [[1]](https://arxiv.org/abs/2005.11401)
-##### Fine Tunning
+##### Fine Tuning
+- [[1]](https://arxiv.org/abs/2106.09685)
+- [[2]](https://arxiv.org/abs/2305.14314)
+
 
 ### State Space Models
 - [[1]](https://arxiv.org/abs/2312.00752)
