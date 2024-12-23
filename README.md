@@ -44,8 +44,6 @@ This section is ment to give an overview of how NLP has progressed over the year
   - [Long Short-Term Memory (LSTM)](#long-short-term-memory-lstm)
   - [Gated Recurrent Unit (GRU)](#gated-recurrent-unit-gru)
 - [Variational Autoencoders (VAEs)](#variational-autoencoders-vaes)
-- [Restricted Boltzmann Machines (RBMs)](#restricted-boltzmann-machines-rbms)
-- [Generative Adversarial Networks (GANs)](#generative-adversarial-networks-gans)
 - [Transformers](#transformers)
 - [Transformer-Based Models](#transformer-based-models)
   - [Pretrained Language Models (PLMs)](#pretrained-language-models-plms)
@@ -86,11 +84,6 @@ References
 - [[1]](https://arxiv.org/abs/1406.1078)
 ### Variational Autoencoders (VAEs)
 - [[1]](https://arxiv.org/abs/1511.06349)
-
-### Restricted Boltzmann Machines (RBMs)
-
-### Generative Adversarial Networks (GANs)
-
 ### Transformers
 - [[1]](https://arxiv.org/abs/1409.0473): attention calculated with MLP
 - [[2]](https://arxiv.org/abs/1508.04025): dot product attention (unscaled)
