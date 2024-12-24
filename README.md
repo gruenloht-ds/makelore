@@ -8,7 +8,7 @@ This project is inspired by Andrej Karpathy's [makemore](https://github.com/karp
 
 Gain a deeper understanding of generative modeling and its evolution over time. This project explores the progression of techniques, starting with foundational methods like Markov Models and ending with cutting-edge architectures such as Generative Transformers. Along the way, it will have implementations of notable milestones in generative AI, including RNNs, VAEs, RBMs, and others, offering a comprehensive look at how generative models have advanced through the years.
 
-A secondary objective for this project is to gain experience with webscraping publicly available online information.
+Another objective for this project is to gain experience with webscraping publicly available online information.
 
 
 ## Structure
@@ -25,7 +25,7 @@ A secondary objective for this project is to gain experience with webscraping pu
   - `race`: the race of the NPC
   - `url`: a URL to get more information about the NPC
  
-- `markov/`  contains python script to use a Markov Model / N-gram to generate names
+- `markov/`  contains a python script to use a Markov Model / N-gram to generate names
 
 
 ## Methodologies
