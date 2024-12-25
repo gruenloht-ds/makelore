@@ -47,6 +47,7 @@ def create_vocab(names, window):
     names = ['<'*window + x + '>' for x in names]
     
     vocab = list(set(char for word in names for char in word))
+    vocab.sort()
     
     stoi = {w:i for i,w in enumerate(vocab)}
     itos = {v:k for k,v in stoi.items()}
