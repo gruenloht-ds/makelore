@@ -237,7 +237,7 @@ if __name__ == "__main__":
         
         # Train and save model data (model, train loss, val loss)
         train_loss, val_loss = train_model(train_loader, val_loader=val_loader, epochs=args.epochs, lr=args.lr, model_path=args.model_path)
-        pd.DataFrame({'train_loss': train_loss, 'val_loss': train_model}).to_csv('model_data/losses.csv', index=False)
+        pd.DataFrame({'train_loss': train_loss, 'val_loss': val_loss}).to_csv('model_data/losses.csv', index=False)
 
         # Report test loss
         if args.eval_test:
