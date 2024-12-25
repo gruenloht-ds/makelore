@@ -47,7 +47,7 @@ def create_vocab(names, window):
     names = ['<'*window + x + '>' for x in names]
     
     vocab = list(set(char for word in names for char in word))
-    vocab.sort()
+    vocab.sort() # Sort to keep reproducability across runs
     
     stoi = {w:i for i,w in enumerate(vocab)}
     itos = {v:k for k,v in stoi.items()}
@@ -83,7 +83,9 @@ def create_train_val_test_loader(ix_tensor, iy_tensor, train_size = 0.8, val_siz
     train_dataset, val_dataset, test_dataset = TensorDataset(x_train, y_train), TensorDataset(x_val, y_val), TensorDataset(x_test, y_test)
         
     # Create DataLoader
-    train_loader, val_loader, test_loader = DataLoader(train_dataset, batch_size=64), DataLoader(val_dataset, batch_size=64), DataLoader(test_dataset, batch_size=64)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     
     return train_loader, val_loader, test_loader
 
