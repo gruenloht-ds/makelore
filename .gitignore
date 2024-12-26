@@ -1,4 +1,6 @@
 data/
 working/
+model_data/
 todo.txt
 .ipynb_checkpoints
+nohup.out

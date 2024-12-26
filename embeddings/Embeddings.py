@@ -145,7 +145,7 @@ def train_model(train_loader, val_loader, epochs=10, lr=0.01, model_path=None, d
 
     return (train_loss, val_loss) if val_loader else train_loss
 
-def generate(x="", stoi=None, itos=None, max_length=40):
+def generate(x="", window=None, stoi=None, itos=None, max_length=40):
     n = len(x)
 
     # Pad name if needed
@@ -171,9 +171,9 @@ def generate(x="", stoi=None, itos=None, max_length=40):
     return decode(torch.tensor(x), itos).replace("<", "").replace(">", "")
 
 # Generate names a specified number of times, will not return anything
-def generate_n(n, stoi=None, itos=None, x="", max_len=40):
+def generate_n(n, window, stoi=None, itos=None, x="", max_len=40):
     for index in range(n):
-        print(generate(x, stoi, itos, max_len))
+        print(generate(x, window, stoi, itos, max_len))
 
 if __name__ == "__main__":
     # Set up argument parser
@@ -186,6 +186,7 @@ if __name__ == "__main__":
     parser.add_argument('model_path', type=str, default=None, help="Path to a pre-trained model or to save a trained model.")
     parser.add_argument('window', type=int, default=3, help="Context window size (number of previous tokens to consider).")
     parser.add_argument('--seed', type=int, default=1, help="Random seed for reproducibility.")
+    parser.add_argument("--n_threads", type=int, default=torch.get_num_threads(),help="Number of CPU threads to use.")
     
     # Arguments for sampling
     parser.add_argument('--sample-only', action='store_true', help="Use this flag to generate names without training.")
@@ -204,6 +205,10 @@ if __name__ == "__main__":
                             
     args = parser.parse_args()
 
+    # Set the number of threads PyTorch uses
+    torch.set_num_threads(args.n_threads)
+    torch.set_num_interop_threads(args.n_threads)
+
     # Set the random seed if provided
     if args.seed is not None:
         random.seed(args.seed)
@@ -221,9 +226,9 @@ if __name__ == "__main__":
     if args.sample_only: # Generate names
         # Load model
         model = NeuralProbabilisticLM(len(vocab), args.window, args.emb_size, args.hidden_size)
-        loaded_model.load_state_dict(torch.load(args.model_path + '.pth'))
+        model.load_state_dict(torch.load(args.model_path + '.pth', weights_only=True))
 
-        generate_n(args.num_names, stoi, itos, args.prefix)
+        generate_n(args.num_names, args.window, stoi, itos, args.prefix)
 
     else: # Train a model
         # Prepare datasets
@@ -233,7 +238,7 @@ if __name__ == "__main__":
         # Load model 
         model = NeuralProbabilisticLM(len(vocab), args.window, args.emb_size, args.hidden_size)
         if args.model_path is not None and os.path.exists(args.model_path + '.pth'):
-            loaded_model.load_state_dict(torch.load(args.model_path + '.pth'))
+            model.load_state_dict(torch.load(args.model_path + '.pth', weights_only=True))
         
         # Train and save model data (model, train loss, val loss)
         train_loss, val_loss = train_model(train_loader, val_loader=val_loader, epochs=args.epochs, lr=args.lr, model_path=args.model_path)
