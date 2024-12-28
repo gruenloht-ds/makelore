@@ -76,6 +76,7 @@ References
 
 ##### Vanilla RNN
 - [[1]](https://icml.cc/2011/papers/524_icmlpaper.pdf)
+- [[2]](https://www.fit.vut.cz/research/group/speech/public/publi/2010/mikolov_interspeech2010_IS100722.pdf)
 ##### Long Short-Term Memory (LSTM)
 - [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf)
 - [[2]](https://arxiv.org/abs/1409.3215)
