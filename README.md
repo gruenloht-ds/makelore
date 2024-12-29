@@ -26,6 +26,7 @@ Another objective for this project is to gain experience with webscraping public
   - `url`: a URL to get more information about the NPC
  
 - `markov/`  contains a python script to use a Markov Model / N-gram to generate names
+- `embedding/` contains python code to generate names using embeddings and a shallow neural network
 
 
 ## Methodologies
