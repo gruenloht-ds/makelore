@@ -7,6 +7,8 @@ The usage is below:
 - `model_path`: Path to a pre-trained model or to save a trained model.
 - `window`: Context window size (number of previous tokens to consider).
 - `--seed SEED`: Random seed for reproducibility. Make sure to use the same seed for train/test split if loading in a previously trained model.
+- `--hidden-size HIDDEN_SIZE`: Size of the hidden layer in the neural network.
+- `--emb-size EMB_SIZE`: Size of the embeddings in the neural network.
 
 **Arguments for Sampling:**
 - `--sample-only`: Use this flag to generate names without training.
@@ -17,8 +19,6 @@ The usage is below:
 - `--batch-size BATCH_SIZE`: Batch size for training (default: 32).
 - `--lr LR`: Learning rate for training (default: 0.001).
 - `--epochs EPOCHS`: Number of training epochs (default: 10).
-- `--hidden-size HIDDEN_SIZE`: Size of the hidden layer in the neural network.
-- `--emb-size EMB_SIZE`: Size of the embeddings in the neural network.
 - `--train-size TRAIN_SIZE`: Percentage of samples to use for training (default: 0.8).
 - `--val-size VAL_SIZE`: Percentage of samples to use for validation (default: 0.1).
 - `--eval-test`: Evaluate the final model on the test set. 
