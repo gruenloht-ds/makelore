@@ -2,7 +2,7 @@ Implements a Neural Probabilistic Language Model (Bengio et al., 2003).
 
 To generate names after training the model:
 ```bash
-python Embeddings.py model_data/data/vocabulary.pkl None 3 1024 5 --sample-only --num-names=10 --load-model=model_data/V2/NPLM-w3-emb5-h1024-bs64-lr1e-3-1729.pth --seed=42
+python Embeddings.py model_data/data/vocabulary.pkl 3 1024 5 --sample-only --num-names=10 --load-model=model_data/V2/NPLM-w3-emb5-h1024-bs64-lr1e-3-1729.pth --seed=42
 ```
 
 Output:
@@ -42,12 +42,12 @@ python train_test_split.py ../npc_data.csv model_data/data/processed_data_w3.pkl
 
 **Genral Arguments:**
 - `vocab_path`: Path to the vocabulary (.pkl file).
-- `save_model_path`: Path to save the trained model (without the extension).
 - `window`: Context window size (number of previous tokens to consider).
 - `emb-size EMB_SIZE`: Size of the character embeddings in the neural network.
 - `hidden-size HIDDEN_SIZE`: Size of the hidden layer in the neural network.
 - `--data_path DATA_PATH`: Path to the processed datasets (.pkl file).
 - `--load_model_path LOAD_MODEL_PATH`: Path to the pre-trained model (with the extension).
+- `--save-model-path`: Path to save the trained model (without the extension).
 - `--seed SEED`: Random seed for reproducibility.
 - `--n_threads N_THREADS`: Number of CPU threads to use.
 
@@ -70,12 +70,12 @@ see `run_model.sh`
 ```bash
 nohup python -u Embeddings.py \
   model_data/data/vocabulary.pkl \
-  model_data/model \
   3 \ # window size
   100 \ # hidden dim
   2 \ # emb size
   --data-path=model_data/data/processed_data_w3.pkl \
   --load-model-path=model_data/model.pth \
+  --save-model-path=model_data/model \
   --seed=42 \
   --batch-size=64 \
   --lr=1e-3 \
