@@ -46,7 +46,7 @@ def create_dataloaders(x_train, y_train, x_val, y_val, x_test, y_test, batch_siz
     return train_loader, val_loader, test_loader
 
 @torch.no_grad()
-def eval_model(model, loader, device='cpu'):
+def eval_model(loader, device='cpu'):
     val_loss = 0 
     model.eval()
     
@@ -89,7 +89,7 @@ def train_model(train_loader, val_loader, epochs=10, lr=0.01, model_path=None, d
         # Evaluate on validation set if provided
         if val_loader:
             model.eval()
-            val_loss_epoch = eval_model(model, val_loader)
+            val_loss_epoch = eval_model(val_loader)
             val_loss.append(val_loss_epoch)
             print(f"Epoch {epoch+1}/{epochs} - Train Loss: {avg_train_loss:.4f} - Val Loss: {val_loss_epoch:.4f}")
         else:
@@ -141,8 +141,10 @@ if __name__ == "__main__":
     parser.add_argument('vocab_path', type=str, default=None, help="Path to the vocabulary (.pkl file).")
     parser.add_argument('save_model_path', type=str, default=None, help="Path to save the trained model (without the extension).")
     parser.add_argument('window', type=int, default=3, help="Context window size (number of previous tokens to consider).")
-    parser.add_argument('--data_path', type=str, default=None, help="Path to the processed datasets (.pkl file).")
-    parser.add_argument('--load_model_path', type=str, default=None, help="Path to the pre-trained model (with the extension).")
+    parser.add_argument('hidden_size', type=int, default=100, help="Size of the hidden layer in the neural network.")
+    parser.add_argument('emb_size', type=int, default=2, help="Size of the character embeddings in the neural network.")
+    parser.add_argument('--data-path', type=str, default=None, help="Path to the processed datasets (.pkl file).")
+    parser.add_argument('--load-model-path', type=str, default=None, help="Path to the pre-trained model (with the extension).")
     parser.add_argument('--seed', type=int, default=1, help="Random seed for reproducibility.")
     parser.add_argument("--n_threads", type=int, default=torch.get_num_threads(),help="Number of CPU threads to use.")
     
@@ -155,9 +157,7 @@ if __name__ == "__main__":
     parser.add_argument('--batch-size', type=int, default=32, help="Batch size for training (default: 32).")
     parser.add_argument('--lr', type=float, default=0.001, help="Learning rate for training (default: 0.001).")
     parser.add_argument('--epochs', type=int, default=10, help="Number of training epochs (default: 10).")
-    parser.add_argument('--hidden-size', type=int, default=100, help="Size of the hidden layer in the neural network.")
-    parser.add_argument('--emb-size', type=int, default=2, help="Size of the character embeddings in the neural network.")
-    parser.add_argument('--eval-test', action='store_true', help="Evaluate the final model on the test set. Make sure to use the same seed for train/test split if loading in a previously trained model.")
+    parser.add_argument('--eval-test', action='store_true', help="Evaluate the final model on the test set.")
                             
     args = parser.parse_args()
 
@@ -209,4 +209,4 @@ if __name__ == "__main__":
 
         # Report test loss
         if args.eval_test:
-            print('Test loss:'. eval_model(model, test_loader))
+            print('Test loss:', eval_model(test_loader))
