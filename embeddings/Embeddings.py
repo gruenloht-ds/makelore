@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 import torch
@@ -11,6 +10,7 @@ from torch.utils.data import Dataset, TensorDataset, DataLoader
 import argparse
 import os
 import random
+import pickle
 
 # Neural Probabilistic Language Model
 class NeuralProbabilisticLM(nn.Module):
@@ -34,51 +34,7 @@ class NeuralProbabilisticLM(nn.Module):
         x = self.layer2(x)
         return x
 
-
-def encode(word, stoi):
-    return [stoi[c] for c in word]
-
-def decode(ix, itos):
-    return ''.join([itos[i] for i in ix.tolist()])
-    
-def create_vocab(names, window):
-    names = np.array(names, dtype=str)
-    names = np.char.lower(names).tolist()
-    names = ['<'*window + x + '>' for x in names]
-    
-    vocab = list(set(char for word in names for char in word))
-    vocab.sort() # Sort to keep reproducability across runs
-    
-    stoi = {w:i for i,w in enumerate(vocab)}
-    itos = {v:k for k,v in stoi.items()}
-    
-    return names, vocab, stoi, itos
-    
-def create_dataset(names, window, stoi, itos):
-    ix = []
-    iy = []
-    for word in names:
-        # print(word)
-        for i in range(len(word) - window):
-            # print('\t', word[i:i+window], ' ---> ', word[i+window])
-            ix.append(word[i:i+window])
-            iy.append(word[i+window])
-    
-    ix_tensor = torch.tensor([encode(w, stoi) for w in ix])
-    iy_tensor = torch.tensor(encode(iy, stoi))
-    
-    return ix_tensor, iy_tensor
-    
-def create_train_val_test_loader(ix_tensor, iy_tensor, train_size = 0.8, val_size=0.1, batch_size = 64):
-    val_size = train_size + val_size
-    n1, n2 = int(len(ix_tensor) * train_size), int(len(ix_tensor) * val_size)
-
-    idx = torch.randperm(len(ix_tensor))
-    idx_train, idx_val, idx_test = idx[:n1], idx[n1:n2], idx[n2:]
-    
-    x_train, x_val, x_test = ix_tensor[idx_train], ix_tensor[idx_val], ix_tensor[idx_test]
-    y_train, y_val, y_test = iy_tensor[idx_train], iy_tensor[idx_val], iy_tensor[idx_test]
-        
+def create_dataloaders(x_train, y_train, x_val, y_val, x_test, y_test, batch_size):
     # Create TensorDataset
     train_dataset, val_dataset, test_dataset = TensorDataset(x_train, y_train), TensorDataset(x_val, y_val), TensorDataset(x_test, y_test)
         
@@ -86,7 +42,7 @@ def create_train_val_test_loader(ix_tensor, iy_tensor, train_size = 0.8, val_siz
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-    
+
     return train_loader, val_loader, test_loader
 
 @torch.no_grad()
@@ -182,9 +138,11 @@ if __name__ == "__main__":
     )
     
     # General arguments
-    parser.add_argument('names_file', type=str, default=None, help="Path to the CSV file containing NPC names data.")
-    parser.add_argument('model_path', type=str, default=None, help="Path to a pre-trained model or to save a trained model.")
+    parser.add_argument('vocab_path', type=str, default=None, help="Path to the vocabulary (.pkl file).")
+    parser.add_argument('save_model_path', type=str, default=None, help="Path to save the trained model (without the extension).")
     parser.add_argument('window', type=int, default=3, help="Context window size (number of previous tokens to consider).")
+    parser.add_argument('--data_path', type=str, default=None, help="Path to the processed datasets (.pkl file).")
+    parser.add_argument('--load_model_path', type=str, default=None, help="Path to the pre-trained model (with the extension).")
     parser.add_argument('--seed', type=int, default=1, help="Random seed for reproducibility.")
     parser.add_argument("--n_threads", type=int, default=torch.get_num_threads(),help="Number of CPU threads to use.")
     
@@ -198,9 +156,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=0.001, help="Learning rate for training (default: 0.001).")
     parser.add_argument('--epochs', type=int, default=10, help="Number of training epochs (default: 10).")
     parser.add_argument('--hidden-size', type=int, default=100, help="Size of the hidden layer in the neural network.")
-    parser.add_argument('--emb-size', type=int, default=2, help="Size of the embeddings in the neural network.")
-    parser.add_argument('--train-size', type=float, default=0.8, help="Percentage of samples to use for training (default: 0.8).")
-    parser.add_argument('--val-size', type=float, default=0.1, help="Percentage of samples to use for validation (default: 0.1).")
+    parser.add_argument('--emb-size', type=int, default=2, help="Size of the character embeddings in the neural network.")
     parser.add_argument('--eval-test', action='store_true', help="Evaluate the final model on the test set. Make sure to use the same seed for train/test split if loading in a previously trained model.")
                             
     args = parser.parse_args()
@@ -219,29 +175,36 @@ if __name__ == "__main__":
         torch.use_deterministic_algorithms(True)
         torch.backends.cudnn.benchmark = False
 
-    # Process names
-    names = pd.read_csv(args.names_file).name.values
-    names, vocab, stoi, itos = create_vocab(names, args.window)
+    # Load vocabulary
+    with open(args.vocab_path, "rb") as file:
+        vocabulary = pickle.load(file)
+
+    vocab, stoi, itos = vocabulary.values()
     
     if args.sample_only: # Generate names
         # Load model
         model = NeuralProbabilisticLM(len(vocab), args.window, args.emb_size, args.hidden_size)
-        model.load_state_dict(torch.load(args.model_path + '.pth', weights_only=True))
+        model.load_state_dict(torch.load(args.load_model_path, weights_only=True))
 
         generate_n(args.num_names, args.window, stoi, itos, args.prefix)
 
     else: # Train a model
+        # Load datasets
+        with open(args.data_path, "rb") as file:
+            data = pickle.load(file)
+
+        data['batch_size'] = args.batch_size
+        
         # Prepare datasets
-        ix_tensor, iy_tensor = create_dataset(names, args.window, stoi, itos)
-        train_loader, val_loader, test_loader = create_train_val_test_loader(ix_tensor, iy_tensor, args.train_size, args.val_size, args.batch_size)
+        train_loader, val_loader, test_loader = create_dataloaders(**data)
         
         # Load model 
         model = NeuralProbabilisticLM(len(vocab), args.window, args.emb_size, args.hidden_size)
-        if args.model_path is not None and os.path.exists(args.model_path + '.pth'):
-            model.load_state_dict(torch.load(args.model_path + '.pth', weights_only=True))
-        
+        if args.load_model_path is not None and os.path.exists(args.load_model_path):
+            model.load_state_dict(torch.load(args.load_model_path, weights_only=True))
+
         # Train and save model data (model, train loss, val loss)
-        train_loss, val_loss = train_model(train_loader, val_loader=val_loader, epochs=args.epochs, lr=args.lr, model_path=args.model_path)
+        train_loss, val_loss = train_model(train_loader, val_loader=val_loader, epochs=args.epochs, lr=args.lr, model_path=args.save_model_path)
         pd.DataFrame({'train_loss': train_loss, 'val_loss': val_loss}).to_csv('model_data/losses.csv', index=False)
 
         # Report test loss
