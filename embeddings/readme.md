@@ -1,14 +1,35 @@
 Implements a Neural Probabilistic Language Model (Bengio et al., 2003).
 
-The usage is below:
+## `train_test_split.py`
+
+Processes the data into training, validation, and testing sets
+
+**Arguments**
+- `names_file` :           Path to the CSV file containing NPC names data.
+- `save_data_path `:      Path to save the processed data (must be .pkl file).
+- `save_vocab_path` :      Path to save the vocabulary (must be .pkl file).
+- `window`      :     Context window size (number of previous tokens to consider).
+- `--seed SEED `  :        Random seed for reproducibility.
+- `--train-size TRAIN_SIZE`: Percentage of samples to use for training (default: 0.8).
+- `--val-size VAL_SIZE`:   Percentage of samples to use for validation (default: 0.1).
+
+```bash
+python train_test_split.py ../npc_data.csv model_data/data/processed_data_w3.pkl model_data/data/vocabulary.pkl 3 --seed=42
+```
+
+## `Embeddings.py`
 
 **Genral Arguments:**
-- `names_file`: Path to the CSV file containing NPC names data.
-- `model_path`: Path to a pre-trained model or to save a trained model.
+- `vocab_path`: Path to the vocabulary (.pkl file).
+- `save_model_path`: Path to save the trained model (without the extension).
 - `window`: Context window size (number of previous tokens to consider).
-- `--seed SEED`: Random seed for reproducibility. Make sure to use the same seed for train/test split if loading in a previously trained model.
-- `--hidden-size HIDDEN_SIZE`: Size of the hidden layer in the neural network.
-- `--emb-size EMB_SIZE`: Size of the embeddings in the neural network.
+- `emb-size EMB_SIZE`: Size of the character embeddings in the neural network.
+- `hidden-size HIDDEN_SIZE`: Size of the hidden layer in the neural network.
+- `--data_path DATA_PATH`: Path to the processed datasets (.pkl file).
+- `--load_model_path LOAD_MODEL_PATH`: Path to the pre-trained model (with the extension).
+- `--seed SEED`: Random seed for reproducibility.
+- `--n_threads N_THREADS`: Number of CPU threads to use.
+
 
 **Arguments for Sampling:**
 - `--sample-only`: Use this flag to generate names without training.
@@ -16,27 +37,28 @@ The usage is below:
 - `--prefix PREFIX`: Optional prefix to start generated names (used with --sample-only).
 
 **Arguments for Training:**
-- `--batch-size BATCH_SIZE`: Batch size for training (default: 32).
-- `--lr LR`: Learning rate for training (default: 0.001).
-- `--epochs EPOCHS`: Number of training epochs (default: 10).
-- `--train-size TRAIN_SIZE`: Percentage of samples to use for training (default: 0.8).
-- `--val-size VAL_SIZE`: Percentage of samples to use for validation (default: 0.1).
-- `--eval-test`: Evaluate the final model on the test set. 
+- `--batch-size`: Batch size for training (default: 32)
+- `--lr`: Learning rate for training (default: 0.001).
+- `--epochs`: Number of training epochs.
+- `--eval-test`: Evaluate the final model on the test set.
 
 **Training Example:**
+
+see `run_model.sh`
+
 ```bash
 nohup python -u Embeddings.py \
-  ../npc_data.csv \
-  model_data/NPLM-w3-b64-lr0_005-h500-emb2 \
-  3 \
-  --batch-size=64 \
-  --lr=0.005 \
-  --epochs=120 \
-  --hidden-size=500 \
-  --emb-size=2 \
-  --train-size=0.8 \
-  --val-size=0.1 \
+  model_data/data/vocabulary.pkl \
+  model_data/model \
+  3 \ # window size
+  100 \ # hidden dim
+  2 \ # emb size
+  --data-path=model_data/data/processed_data_w3.pkl \
+  --load-model-path=model_data/model.pth \
   --seed=42 \
+  --batch-size=64 \
+  --lr=1e-3 \
+  --epochs=10
   &
 ```
 
