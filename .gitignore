@@ -5,3 +5,4 @@ todo.txt
 .ipynb_checkpoints
 nohup.out
 log.txt
+__pycache__/
