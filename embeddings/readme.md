@@ -1,5 +1,26 @@
 Implements a Neural Probabilistic Language Model (Bengio et al., 2003).
 
+To generate names after training the model:
+```bash
+python Embeddings.py model_data/data/vocabulary.pkl None 3 1024 5 --sample-only --num-names=10 --load-model=model_data/V2/NPLM-w3-emb5-h1024-bs64-lr1e-3-1729.pth --seed=42
+```
+
+Output:
+```
+fannii herdingle colericker fouts-lan
+ala raevenammu
+widemenwintealerionnife laventonge
+saawn
+fabbal
+wicus
+mazouraxid
+yphilant grom
+fasradami tele pathreigh-hakofrun
+blachan
+```
+
+In comparision to the n-gram model, this model seems to produce longer names, and most of the names still are difficult to read. However, the names that it generates seem to be more readable than the n-gram model. 
+
 ## `train_test_split.py`
 
 Processes the data into training, validation, and testing sets
