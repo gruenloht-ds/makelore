@@ -101,6 +101,12 @@ def train_model(train_loader, val_loader, epochs=10, lr=0.01, model_path=None, d
 
     return (train_loss, val_loss) if val_loader else train_loss
 
+def encode(word, stoi):
+    return [stoi[c] for c in word]
+
+def decode(ix, itos):
+    return ''.join([itos[i] for i in ix.tolist()])
+
 def generate(x="", window=None, stoi=None, itos=None, max_length=40):
     n = len(x)
 
@@ -139,13 +145,13 @@ if __name__ == "__main__":
     
     # General arguments
     parser.add_argument('vocab_path', type=str, default=None, help="Path to the vocabulary (.pkl file).")
-    parser.add_argument('save_model_path', type=str, default=None, help="Path to save the trained model (without the extension).")
     parser.add_argument('window', type=int, default=3, help="Context window size (number of previous tokens to consider).")
     parser.add_argument('hidden_size', type=int, default=100, help="Size of the hidden layer in the neural network.")
     parser.add_argument('emb_size', type=int, default=2, help="Size of the character embeddings in the neural network.")
     parser.add_argument('--data-path', type=str, default=None, help="Path to the processed datasets (.pkl file).")
     parser.add_argument('--load-model-path', type=str, default=None, help="Path to the pre-trained model (with the extension).")
-    parser.add_argument('--seed', type=int, default=1, help="Random seed for reproducibility.")
+    parser.add_argument('--save-model-path', type=str, default=None, help="Path to save the trained model (without the extension).")
+    parser.add_argument('--seed', type=int, default=None, help="Random seed for reproducibility.")
     parser.add_argument("--n_threads", type=int, default=torch.get_num_threads(),help="Number of CPU threads to use.")
     
     # Arguments for sampling
@@ -209,4 +215,6 @@ if __name__ == "__main__":
 
         # Report test loss
         if args.eval_test:
+            print('Train loss:', eval_model(train_loader))
+            print('Val loss:', eval_model(val_loader))
             print('Test loss:', eval_model(test_loader))

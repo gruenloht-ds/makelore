@@ -19,12 +19,12 @@ eval_test=""
 
 python -u Embeddings.py \
   $vocab_path \
-  $save_model_path \
   $window \
   $hidden_size \
   $emb_size \
   --data-path=$data_path \
   --load-model-path=$load_model_path \
+  --save-model-path=$save_model_path \
   --seed=$seed \
   --batch-size=$batch_size \
   --lr=$lr \
