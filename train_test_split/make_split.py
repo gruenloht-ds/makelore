@@ -24,7 +24,7 @@ def stratified_split(data, split_col, train_size, test_size, seed):
     val_size = test_size / temp_size
     val_df, test_df = train_test_split(
         temp_df,
-        test_size=0.5,
+        test_size=val_size,
         stratify=stratify_col,
         random_state=seed
     )
