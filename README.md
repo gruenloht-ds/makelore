@@ -69,43 +69,48 @@ The limitations of n-grams include two main drawbacks:
 
 
 References
-- [[1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6773024)
+
+- [[1]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6773024) A mathematical theory of communication - *Shannon, C. (1948)* 
 
 ### Embeddings
-- [[1]](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
+- [[1]](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf) A Neural Probabilistic Language Model - *Bengio, Y. et al. (2003)*
 ### Recurrent Neural Networks (RNNs)
 
 ##### Vanilla RNN
-- [[1]](https://icml.cc/2011/papers/524_icmlpaper.pdf)
-- [[2]](https://www.fit.vut.cz/research/group/speech/public/publi/2010/mikolov_interspeech2010_IS100722.pdf)
+- [[1]](https://www.fit.vut.cz/research/group/speech/public/publi/2010/mikolov_interspeech2010_IS100722.pdf) Recurrent neural network based language model - *Mikolov, T. et al. (2010)* 
+- [[2]](https://icml.cc/2011/papers/524_icmlpaper.pdf) Generating Text with Recurrent Neural Networks - *Sutskever, I. et al. (2011)* 
+
 ##### Long Short-Term Memory (LSTM)
-- [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf)
-- [[2]](https://arxiv.org/abs/1409.3215)
-- [[3]](https://arxiv.org/abs/2405.04517) - xlstm came after GPTs and popular transformers - asked the question does architecture matter or is it just a matter of feeding large amounts of data to a model
+- [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf) *Long Short-Term Memory - Hochreiter, S. and Schmidhuber, J. (1997)*
+- [[2]](https://arxiv.org/abs/1409.3215) *Sequence to Sequence Learning with Neural Networks - Sutskever, I. et al. (2014)*
+- [[3]](https://arxiv.org/abs/2405.04517) *xLSTM: Extended Long Short-Term Memory - Beck, M. et al. (2024)*
+   - xlstm came after GPTs and popular transformers - asked the question does architecture matter or is it just a matter of feeding large amounts of data to a model
 ##### Gated Recurrent Unit (GRU)
-- [[1]](https://arxiv.org/abs/1406.1078)
+- [[1]](https://arxiv.org/abs/1406.1078) *Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation - Cho, K. et al. (2014)*
 ### Variational Autoencoders (VAEs)
-- [[1]](https://arxiv.org/abs/1511.06349)
+- [[1]](https://arxiv.org/abs/1511.06349) *Generating Sentences from a Continuous Space - Bowman, S. et al. (2016)*
 ### Transformers
-- [[1]](https://arxiv.org/abs/1409.0473): attention calculated with MLP
-- [[2]](https://arxiv.org/abs/1508.04025): dot product attention (unscaled)
-- [[3]](https://arxiv.org/abs/1706.03762): transformer architecture 
+- [[1]](https://arxiv.org/abs/1409.0473)  *Neural Machine Translation by Jointly Learning to Align and Translate - Bahdanau, D. et al. (2014)*
+    - attention calculated with MLP
+- [[2]](https://arxiv.org/abs/1508.04025) *Effective Approaches to Attention-based Neural Machine Translation - Luong, M. et al.  (2015)*
+    - dot product attention (unscaled)
+- [[3]](https://arxiv.org/abs/1706.03762) *Attention Is All You Need - Vaswani, A. et al. (2017)*
+    - transformer architecture 
 
 ### Transformer-Based Models
 
 #### Pretrained Language Models (PLMs)
-- [[1]](https://arxiv.org/abs/1810.04805) bert
+- [[1]](https://arxiv.org/abs/1810.04805)  *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding - Delvin, J. et al. (2018)*
 #### Large Language Models (LLMs)
-- [[1]](https://arxiv.org/abs/2203.02155) chatgpt
-- [[2]](https://arxiv.org/abs/2302.13971) llama
+- [[1]](https://arxiv.org/abs/2203.02155)  *Training language models to follow instructions with human feedback - Ouyang, L. et al. (2022)*
+- [[2]](https://arxiv.org/abs/2302.13971)  *LLaMA: Open and Efficient Foundation Language Models - Touvron, H. et al. (2023)*
 ##### Zero-shot, One-shot, Few-shot Learning
-- [[1]](https://arxiv.org/abs/2005.14165) lms are few shot learners
+- [[1]](https://arxiv.org/abs/2005.14165) *Language Models are Few-Shot Learners - Brown, T. et al. (2020)*
 ##### Retrieval Augmented Generation (RAG)
-- [[1]](https://arxiv.org/abs/2005.11401)
+- [[1]](https://arxiv.org/abs/2005.11401) *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks - Lewis, P. et al. (2020)*
 ##### Fine Tuning
-- [[1]](https://arxiv.org/abs/2106.09685)
-- [[2]](https://arxiv.org/abs/2305.14314)
+- [[1]](https://arxiv.org/abs/2106.09685) *LoRA: Low-Rank Adaptation of Large Language Models - Hu, E. et al. (2021)*
 
 
 ### State Space Models
-- [[1]](https://arxiv.org/abs/2312.00752)
+- [[1]](https://arxiv.org/abs/2312.00752) *Mamba: Linear-Time Sequence Modeling with Selective State Spaces - Gu, A. and Dao, T. (2023)*
