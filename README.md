@@ -82,8 +82,9 @@ References
 
 ##### Long Short-Term Memory (LSTM)
 - [[1]](https://www.bioinf.jku.at/publications/older/2604.pdf) *Long Short-Term Memory - Hochreiter, S. and Schmidhuber, J. (1997)*
-- [[2]](https://arxiv.org/abs/1409.3215) *Sequence to Sequence Learning with Neural Networks - Sutskever, I. et al. (2014)*
-- [[3]](https://arxiv.org/abs/2405.04517) *xLSTM: Extended Long Short-Term Memory - Beck, M. et al. (2024)*
+- [[2]](https://arxiv.org/abs/1308.0850) *Generating Sequences With Recurrent Neural Networks - Alex Graves (2013)*
+- [[3]](https://arxiv.org/abs/1409.3215) *Sequence to Sequence Learning with Neural Networks - Sutskever, I. et al. (2014)*
+- [[4]](https://arxiv.org/abs/2405.04517) *xLSTM: Extended Long Short-Term Memory - Beck, M. et al. (2024)*
    - xlstm came after GPTs and popular transformers - asked the question does architecture matter or is it just a matter of feeding large amounts of data to a model
 ##### Gated Recurrent Unit (GRU)
 - [[1]](https://arxiv.org/abs/1406.1078) *Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation - Cho, K. et al. (2014)*
